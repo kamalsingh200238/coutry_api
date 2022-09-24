@@ -22,5 +22,6 @@ export default function Layout({ children }) {
   } else {
     console.log("you are on server");
   }
-  return <>{children}</>;
+
+  return <main>{children}</main>;
 }
