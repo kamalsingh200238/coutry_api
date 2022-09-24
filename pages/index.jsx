@@ -1,3 +1,15 @@
-export default function Home() {
-  return <div className="dark:bg-purple-500 bg-emerald-700">working</div>;
+import getAllCountryData from "../lib/getAllCountryData.js";
+
+export async function getStaticProps() {
+  const data = await getAllCountryData();
+  return {
+    props: {
+      allCountryData: data,
+    },
+  };
+}
+
+export default function Home({ allCountryData }) {
+  console.log(allCountryData);
+  return <></>;
 }
