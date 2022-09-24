@@ -1,6 +1,7 @@
 import getSingleCountryData from "../../lib/getSingleCountryData.js";
 import getAllCountryData from "../../lib/getAllCountryData.js";
 import Head from "next/head";
+import SingleCountryInfo from "../../components/SingleCountryInfo.jsx";
 
 export async function getStaticPaths() {
   // call the api
@@ -36,6 +37,9 @@ export default function SingleCountryPage({ singleCountryData }) {
       <Head>
         <title>Country api</title>
       </Head>
+      <div>
+        <SingleCountryInfo singleCountryData={singleCountryData[0]} />
+      </div>
     </>
   );
 }
