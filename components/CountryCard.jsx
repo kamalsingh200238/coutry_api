@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CountryCard(props) {
   return (
-    <Link href={`/country/${props.singleCountryData.name.official}`}>
+    <Link href={`/country/${props.singleCountryData.cca2}`}>
       <a>
         <div className="relative aspect-[3/2] w-52">
           <Image

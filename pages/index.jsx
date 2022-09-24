@@ -12,7 +12,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allCountryData }) {
-  console.log(allCountryData);
   return (
     <>
       <Head>
