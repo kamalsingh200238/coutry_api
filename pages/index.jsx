@@ -23,21 +23,31 @@ export default function Home({ allCountryData }) {
   const [filteredAllCountryData, setFilteredAllCountryData] =
     useState(allCountryData);
 
-  // parameters in which search text need to matched
+  // state of parameters in which search text need to matched
   const [searchParams] = useState(["common", "official"]);
+
+  // state of region for filter, from drop down
+  const [regionForFilter, setRegionForFilter] = useState("");
 
   // Filter Logic
   useEffect(() => {
     setFilteredAllCountryData(
       allCountryData.filter((singleCountryData) => {
-        return searchParams.some((singleParam) => {
-          return singleCountryData.name[singleParam]
+        return (
+          // First check if country is in region selected by user from dropdown
+          singleCountryData.region
             .toLowerCase()
-            .includes(q.toLowerCase());
-        });
+            .includes(regionForFilter.toLowerCase()) &&
+          // Second check if the country has the characters typed in search field by user
+          searchParams.some((singleParam) => {
+            return singleCountryData.name[singleParam]
+              .toLowerCase()
+              .includes(q.toLowerCase());
+          })
+        );
       })
     );
-  }, [q]);
+  }, [q, regionForFilter]);
   return (
     <>
       <Head>
@@ -54,6 +64,20 @@ export default function Home({ allCountryData }) {
         />
         <span className="sr-only">Search countries here</span>
       </label>
+      <label htmlFor="filter-by-region">Filter by Region</label>
+      <select
+        name="Filter by region"
+        id="filter-by-region"
+        onChange={(e) => {
+          setRegionForFilter(e.target.value);
+        }}
+      >
+        <option value="">All</option>
+        <option value="America">America</option>
+        <option value="Europe">Europe</option>
+        <option value="Asia">Asia</option>
+        <option value="Oceania">Oceania</option>
+      </select>
       <div>
         {filteredAllCountryData.map((item, index) => (
           <CountryCard key={index} singleCountryData={item} />
