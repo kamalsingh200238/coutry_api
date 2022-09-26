@@ -24,11 +24,10 @@ export default function Home({ allCountryData }) {
     useState(allCountryData);
 
   // state of parameters in which search text need to matched
-  const [searchParams] = useState(["common", "official"]);
+  const [searchParams] = useState(["official", "common"]);
 
   // state of region for filter, from drop down
   const [regionForFilter, setRegionForFilter] = useState("");
-
   // Filter Logic
   useEffect(() => {
     setFilteredAllCountryData(
@@ -49,40 +48,45 @@ export default function Home({ allCountryData }) {
     );
   }, [q, regionForFilter]);
   return (
-    <>
+    <div className="lg:container pt-10 px-5">
       <Head>
         <title>Country api</title>
       </Head>
-      <label htmlFor="search-form">
+      <div>
         <input
+          className="w-full rounded-lg shadow-lg border-gray-300 focus:border-gray-600 focus:ring-gray-700"
           type="search"
           name="search-form"
           id="search-form"
           placeholder="Search for..."
           value={q}
-          onChange={(e) => setQ(e.target.value)}
+          onChange={async (e) => {
+            setQ(e.target.value);
+          }}
         />
         <span className="sr-only">Search countries here</span>
-      </label>
-      <label htmlFor="filter-by-region">Filter by Region</label>
-      <select
-        name="Filter by region"
-        id="filter-by-region"
-        onChange={(e) => {
-          setRegionForFilter(e.target.value);
-        }}
-      >
-        <option value="">All</option>
-        <option value="America">America</option>
-        <option value="Europe">Europe</option>
-        <option value="Asia">Asia</option>
-        <option value="Oceania">Oceania</option>
-      </select>
+      </div>
       <div>
+        <select
+          name="Filter by region"
+          id="filter-by-region"
+          className="w-2/3 rounded-lg shadow-lg border-gray-300 focus:border-gray-600 focus:ring-gray-700"
+          onChange={(e) => {
+            setRegionForFilter(e.target.value);
+          }}
+        >
+          <option value="">Filter by region</option>
+          <option value="America">America</option>
+          <option value="Europe">Europe</option>
+          <option value="Asia">Asia</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+      <div className="grid px-10 gap-10">
         {filteredAllCountryData.map((item, index) => (
           <CountryCard key={index} singleCountryData={item} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

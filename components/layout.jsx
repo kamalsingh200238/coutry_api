@@ -23,5 +23,13 @@ export default function Layout({ children }) {
     console.log("you are on server");
   }
 
-  return <main>{children}</main>;
+  return (
+    <>
+      <nav className="flex justify-between">
+        <p>where in the world?</p>
+        <button>Dark Mode</button>
+      </nav>
+      <main>{children}</main>
+    </>
+  );
 }

@@ -21,7 +21,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const data = await getSingleCountryData(params.cca2);
   return {
     props: {
@@ -31,7 +30,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function SingleCountryPage({ singleCountryData }) {
-  console.log(singleCountryData);
   return (
     <>
       <Head>
