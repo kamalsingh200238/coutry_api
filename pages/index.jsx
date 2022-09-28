@@ -60,7 +60,7 @@ export default function Home({ allCountryData }) {
           id="search-form"
           placeholder="Search for..."
           value={q}
-          onChange={async (e) => {
+          onChange={(e) => {
             setQ(e.target.value);
           }}
         />
