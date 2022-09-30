@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import getAllCountryData from "../lib/getAllCountryData.js";
 import CountryCard from "../components/CountryCard.jsx";
+import DropDown from "../components/DropDown.jsx";
 
 export async function getStaticProps() {
   const data = await getAllCountryData();
@@ -28,6 +29,7 @@ export default function Home({ allCountryData }) {
 
   // state of region for filter, from drop down
   const [regionForFilter, setRegionForFilter] = useState("");
+
   // Filter Logic
   useEffect(() => {
     setFilteredAllCountryData(
@@ -47,42 +49,34 @@ export default function Home({ allCountryData }) {
       })
     );
   }, [q, regionForFilter]);
+
   return (
-    <div className="lg:container pt-10 px-5">
+    <div className="lg:container pt-8 px-5">
       <Head>
         <title>Country api</title>
       </Head>
-      <div>
-        <input
-          className="w-full rounded-lg shadow-lg border-gray-300 focus:border-gray-600 focus:ring-gray-700"
-          type="search"
-          name="search-form"
-          id="search-form"
-          placeholder="Search for..."
-          value={q}
-          onChange={(e) => {
-            setQ(e.target.value);
-          }}
-        />
-        <span className="sr-only">Search countries here</span>
+      <div className="flex flex-col gap-10 mb-10">
+        <div className="">
+          <input
+            className="px-6 py-3 w-full rounded-lg shadow-lg border-gray-300 focus:outline-none focus:border-gray-600 focus:ring-gray-700"
+            type="search"
+            name="search-form"
+            id="search-form"
+            placeholder="Search for a country..."
+            value={q}
+            onChange={(e) => {
+              setQ(e.target.value);
+            }}
+          />
+          <span className="sr-only">Search countries here</span>
+        </div>
+
+        <div className="w-2/3">
+          <DropDown setRegionForFilter={setRegionForFilter} />
+        </div>
       </div>
-      <div>
-        <select
-          name="Filter by region"
-          id="filter-by-region"
-          className="w-2/3 rounded-lg shadow-lg border-gray-300 focus:border-gray-600 focus:ring-gray-700"
-          onChange={(e) => {
-            setRegionForFilter(e.target.value);
-          }}
-        >
-          <option value="">Filter by region</option>
-          <option value="America">America</option>
-          <option value="Europe">Europe</option>
-          <option value="Asia">Asia</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-      </div>
-      <div className="grid px-10 gap-10">
+
+      <div className="grid px-10 gap-14">
         {filteredAllCountryData.map((item, index) => (
           <CountryCard key={index} singleCountryData={item} />
         ))}

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CountryCard(props) {
   return (
     <Link href={`/country/${props.singleCountryData.cca2}`}>
-      <a className="rounded-md overflow-hidden flex flex-col gap-6 border border-gray-200 shadow-lg pb-10">
+      <a className="rounded-md pb-8 overflow-hidden flex flex-col gap-6 border border-gray-200 shadow-lg">
         <div className="relative w-full aspect-video">
           <Image
             priority
@@ -19,13 +19,18 @@ export default function CountryCard(props) {
             {props.singleCountryData.name.official}
           </p>
           <p>
-            Population: <span>{props.singleCountryData.population}</span>
+            <span className="font-medium ">Population: </span>
+            {props.singleCountryData.population.toLocaleString("en", {
+              useGrouping: true,
+            })}
           </p>
           <p>
-            Region: <span>{props.singleCountryData.region}</span>
+            <span className="font-medium">region: </span>
+            {props.singleCountryData.region}
           </p>
           <p>
-            Capital: <span>{props.singleCountryData.capital}</span>
+            <span className="font-medium ">Capital: </span>
+            {props.singleCountryData.capital}
           </p>
         </div>
       </a>

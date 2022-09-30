@@ -25,8 +25,8 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <nav className="flex justify-between">
-        <p>where in the world?</p>
+      <nav className="flex justify-between px-4 py-8 shadow-md">
+        <p>Where in the world?</p>
         <button>Dark Mode</button>
       </nav>
       <main>{children}</main>
