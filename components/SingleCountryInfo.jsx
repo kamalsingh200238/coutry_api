@@ -71,7 +71,7 @@ export default function SingleCountryInfo(props) {
         <div>
           <p>Border Countries: </p>
           <div className="flex gap-4">
-            {props.singleCountryData.borders.map((item) => {
+            {props.singleCountryData.borders?.map((item) => {
               return <BorderCountryButton cca3={item} />;
             })}
           </div>
