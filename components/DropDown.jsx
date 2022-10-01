@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 const listOfOptions = [
   {
@@ -57,22 +57,32 @@ export default function DropDown(props) {
           </span>
         </Listbox.Button>
         {/* These are the options in the List */}
-        <Listbox.Options className="absolute z-50 w-full bg-white mt-1">
-          {listOfOptions.map((option, index) => (
-            <Listbox.Option key={index} value={option}>
-              {({ active, selected }) => (
-                <button
-                  value={option.value}
-                  className={`${active ? "bg-blue-400" : ""} ${
-                    selected ? "bg-yellow-200" : ""
-                  } w-full text-left px-6 py-3 rounded-lg`}
-                >
-                  {option.text}
-                </button>
-              )}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
+        <Transition
+          as={Fragment}
+          enter="duration-150 ease-in"
+          enterFrom="scale-95 opacity-0"
+          enterTo="scale-100 opacity-100"
+          leave="duration-150 ease-out"
+          leaveFrom="scale-100 opacity-100"
+          leaveTo="scale-95 opacity-0"
+        >
+          <Listbox.Options className="absolute z-50 w-full bg-white mt-1 rounded-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700">
+            {listOfOptions.map((option, index) => (
+              <Listbox.Option key={index} value={option}>
+                {({ active, selected }) => (
+                  <button
+                    value={option.value}
+                    className={`${active ? "bg-blue-100 text-blue-900" : ""} ${
+                      selected ? "bg-yellow-100 text-yellow-900" : ""
+                    } w-full text-left px-6 py-3 rounded-lg`}
+                  >
+                    {option.text}
+                  </button>
+                )}
+              </Listbox.Option>
+            ))}
+          </Listbox.Options>
+        </Transition>
       </div>
     </Listbox>
   );

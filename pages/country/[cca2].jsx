@@ -35,7 +35,7 @@ export default function SingleCountryPage({ singleCountryData }) {
       <Head>
         <title>Country api</title>
       </Head>
-      <div>
+      <div className="lg:container px-10">
         <SingleCountryInfo singleCountryData={singleCountryData[0]} />
       </div>
     </>
