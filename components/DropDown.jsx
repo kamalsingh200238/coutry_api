@@ -66,7 +66,7 @@ export default function DropDown(props) {
           leaveFrom="scale-100 opacity-100"
           leaveTo="scale-95 opacity-0"
         >
-          <Listbox.Options className="absolute z-50 w-full bg-white mt-1 rounded-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700">
+          <Listbox.Options className="border-gray-300 shadow-lg absolute z-50 w-full bg-white mt-1 rounded-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700">
             {listOfOptions.map((option, index) => (
               <Listbox.Option key={index} value={option}>
                 {({ active, selected }) => (

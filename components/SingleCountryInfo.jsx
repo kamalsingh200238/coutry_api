@@ -2,20 +2,49 @@ import Image from "next/image";
 import BorderCountryButton from "../components/BorderCountryButton";
 
 export default function SingleCountryInfo(props) {
-  console.log(props);
-  //for printing native name
-  const nativeName =
-    props.singleCountryData.name.nativeName[
-      Object.keys(props.singleCountryData.languages).pop()
-    ].common;
+  const info1 = [
+    {
+      text: "native name",
+      value:
+        props.singleCountryData.name.nativeName[
+          Object.keys(props.singleCountryData.languages).pop()
+        ].common,
+    },
+    {
+      text: "Population",
+      value: props.singleCountryData.population,
+    },
+    {
+      text: "region",
+      value: props.singleCountryData.region,
+    },
+    {
+      text: "subregion",
+      value: props.singleCountryData.subregion,
+    },
+    {
+      text: "capital",
+      value: props.singleCountryData.capital,
+    },
+  ];
 
-  const currencies =
-    props.singleCountryData.currencies[
-      Object.keys(props.singleCountryData.currencies).pop()
-    ].name;
-
-  const languages = Object.values(props.singleCountryData.languages).join(", ");
-
+  const info2 = [
+    {
+      text: "top level domain",
+      value: props.singleCountryData.tld,
+    },
+    {
+      text: "currencies",
+      value:
+        props.singleCountryData.currencies[
+          Object.keys(props.singleCountryData.currencies).pop()
+        ].name,
+    },
+    {
+      text: "languages",
+      value: Object.values(props.singleCountryData.languages).join(", "),
+    },
+  ];
   return (
     <div className="grid gap-12">
       <div className="relative aspect-video w-full">
@@ -32,48 +61,27 @@ export default function SingleCountryInfo(props) {
           {props.singleCountryData.name.official}
         </h1>
         <div>
-          {" "}
-          <p>
-            <span className="capitalize">native name: </span>
-            {nativeName}
-          </p>
-          <p>
-            <span className="capitalize">population: </span>
-            {props.singleCountryData.population}
-          </p>
-          <p>
-            <span className="capitalize">region: </span>
-            {props.singleCountryData.region}
-          </p>
-          <p>
-            <span className="capitalize">subregion: </span>
-            {props.singleCountryData.subregion}
-          </p>
-          <p>
-            <span className="capitalize">capital: </span>
-            {props.singleCountryData.capital}
-          </p>
+          {info1.map((item) => (
+            <p className="capitalize">
+              <span className="capitalize font-medium">{item.text}: </span>
+              {item.value}
+            </p>
+          ))}
         </div>
         <div>
-          <p>
-            <span className="capitalize">top level domain: </span>
-            {props.singleCountryData.tld}
-          </p>
-          <p>
-            <span className="capitalize">currencies: </span>
-            {currencies}
-          </p>
-          <p>
-            <span className="capitalize">languages: </span>
-            {languages}
-          </p>
+          {info2.map((item) => (
+            <p className="capitalize">
+              <span className="capitalize font-medium">{item.text}: </span>
+              {item.value}
+            </p>
+          ))}
         </div>
         <div>
           <p>Border Countries: </p>
-          <div className="flex gap-4">
-            {props.singleCountryData.borders?.map((item) => {
-              return <BorderCountryButton cca3={item} />;
-            })}
+          <div className="grid grid-cols-2 gap-4">
+            {props.singleCountryData?.borders?.map((item) => (
+              <BorderCountryButton key={item} cca3={item} />
+            ))}
           </div>
         </div>
       </div>

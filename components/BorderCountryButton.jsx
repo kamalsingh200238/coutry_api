@@ -17,13 +17,13 @@ export default function BorderCountryButton(props) {
     return (
       <div className="">
         <Link href={`/country/${singleCountryData[0].cca2}`}>
-          <a className="px-4 py-2 border border-gray-300 block">
+          <a className="px-3 py-2 border border-gray-300 block truncate text-center shadow-md rounded-sm">
             {singleCountryData[0].name.common}
           </a>
         </Link>
       </div>
     );
   } else {
-    return <div>Loading</div>;
+    return <div className="animate-pulse">Loading...</div>;
   }
 }
