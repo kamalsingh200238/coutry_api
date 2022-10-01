@@ -62,7 +62,7 @@ export default function SingleCountryInfo(props) {
         </h1>
         <div>
           {info1.map((item) => (
-            <p className="capitalize">
+            <p key={item.text} className="capitalize">
               <span className="capitalize font-medium">{item.text}: </span>
               {item.value}
             </p>
@@ -70,7 +70,7 @@ export default function SingleCountryInfo(props) {
         </div>
         <div>
           {info2.map((item) => (
-            <p className="capitalize">
+            <p key={item.text} className="capitalize">
               <span className="capitalize font-medium">{item.text}: </span>
               {item.value}
             </p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CountryCard(props) {
   return (
     <Link href={`/country/${props.singleCountryData.cca2}`}>
-      <a className="rounded-md pb-8 overflow-hidden flex flex-col gap-6 border border-gray-200 shadow-lg">
+      <a className="hover:scale-105 transition-all duration-150 ease-in-out rounded-md pb-8 overflow-hidden flex flex-col gap-6 border border-gray-200 shadow-lg">
         <div className="relative w-full aspect-video">
           <Image
             priority
