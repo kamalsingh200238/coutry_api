@@ -5,7 +5,7 @@ export default function CountryCard(props) {
   return (
     <Link href={`/country/${props.singleCountryData.cca2}`}>
       <a className="hover:scale-105 transition-all duration-150 ease-in-out rounded-md pb-8 overflow-hidden flex flex-col gap-6 border-gray-200 shadow-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus:ring dark:bg-elements-d dark:text-white dark:focus:ring-white">
-        <div className="relative w-full aspect-video dark:bg-none">
+        <div className="relative w-full aspect-video dark:bg-white">
           <Image
             priority
             src={props.singleCountryData.flags.svg}
