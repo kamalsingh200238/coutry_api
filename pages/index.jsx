@@ -51,34 +51,36 @@ export default function Home({ allCountryData }) {
   }, [q, regionForFilter]);
 
   return (
-    <div className="lg:container pt-8 px-5 min-h-screen mx-auto">
-      <Head>
-        <title>Country api</title>
-      </Head>
-      <div className="flex flex-col gap-10 mb-10 sm:flex-row sm:justify-between">
-        <div className="max-w-[30rem]">
-          <input
-            className="px-6 py-3 w-full rounded-lg shadow-lg border-gray-300 focus:outline-none focus:border-gray-600 focus:ring-gray-700"
-            type="search"
-            name="search-form"
-            id="search-form"
-            placeholder="Search for a country..."
-            value={q}
-            onChange={(e) => {
-              setQ(e.target.value);
-            }}
-          />
-          <span className="sr-only">Search countries here</span>
-        </div>
+    <div className="dark:bg-background-d">
+      <div className="lg:container pt-8 px-5 min-h-screen mx-auto">
+        <Head>
+          <title>Country api</title>
+        </Head>
+        <div className="flex flex-col gap-10 mb-10 sm:flex-row sm:justify-between">
+          <div className="max-w-[30rem]">
+            <input
+              className="px-6 py-3 w-full rounded-lg shadow-lg border-gray-300 focus:outline-none  focus:ring-gray-700 focus:ring-2 dark:bg-elements-d dark:text-white dark:border-none dark:ring-white"
+              type="search"
+              name="search-form"
+              id="search-form"
+              placeholder="Search for a country..."
+              value={q}
+              onChange={(e) => {
+                setQ(e.target.value);
+              }}
+            />
+            <span className="sr-only">Search countries here</span>
+          </div>
 
-        <div className="w-2/3 max-w-[15rem]">
-          <DropDown setRegionForFilter={setRegionForFilter} />
+          <div className="w-2/3 max-w-[15rem] dark:text-white">
+            <DropDown setRegionForFilter={setRegionForFilter} />
+          </div>
         </div>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 px-10 gap-14 lg:px-0">
-        {filteredAllCountryData.map((item, index) => (
-          <CountryCard key={index} singleCountryData={item} />
-        ))}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 px-10 gap-14 lg:px-0">
+          {filteredAllCountryData.map((item, index) => (
+            <CountryCard key={index} singleCountryData={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

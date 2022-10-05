@@ -45,7 +45,7 @@ export default function DropDown(props) {
     <Listbox value={selected} onChange={setSelected}>
       <div className="relative">
         {/* This is button to open selection menu */}
-        <Listbox.Button className="flex justify-between items-center gap-4 border border-gray-300 rounded-lg px-6 py-3 shadow-lg w-full focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700">
+        <Listbox.Button className="flex justify-between items-center gap-4 border border-gray-300 rounded-lg px-6 py-3 shadow-lg w-full focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700 dark:bg-elements-d dark:hover:bg-background-d dark:border-none focus:ring-2 dark:focus:ring-white">
           <span className="block truncate">
             {selected.text === "None" ? "Filter by region" : selected.text}
           </span>
@@ -66,15 +66,21 @@ export default function DropDown(props) {
           leaveFrom="scale-100 opacity-100"
           leaveTo="scale-95 opacity-0"
         >
-          <Listbox.Options className="border-gray-300 shadow-lg absolute z-50 w-full bg-white mt-1 rounded-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700">
+          <Listbox.Options className="border-gray-300 shadow-lg absolute z-50 w-full bg-white mt-1 rounded-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700 dark:bg-elements-d">
             {listOfOptions.map((option, index) => (
               <Listbox.Option key={index} value={option}>
                 {({ active, selected }) => (
                   <button
                     value={option.value}
-                    className={`${active ? "bg-blue-100 text-blue-900" : ""} ${
-                      selected ? "bg-yellow-100 text-yellow-900" : ""
-                    } w-full text-left px-6 py-3 rounded-lg`}
+                    className={`${
+                      active
+                        ? "bg-blue-100 text-blue-900 dark:text-white dark:bg-background-d transition-all ease-in-out"
+                        : ""
+                    } ${
+                      selected
+                        ? "bg-yellow-100 text-yellow-900 dark:text-white dark:bg-background-d"
+                        : ""
+                    } w-full text-left px-6 py-3 rounded-lg dark:bg-elements-d`}
                   >
                     {option.text}
                   </button>
