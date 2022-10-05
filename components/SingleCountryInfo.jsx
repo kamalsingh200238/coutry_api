@@ -12,7 +12,9 @@ export default function SingleCountryInfo(props) {
     },
     {
       text: "Population",
-      value: props.singleCountryData.population,
+      value: props.singleCountryData.population.toLocaleString("en", {
+        useGrouping: true,
+      }),
     },
     {
       text: "region",
@@ -46,42 +48,57 @@ export default function SingleCountryInfo(props) {
     },
   ];
   return (
-    <div className="grid gap-12">
-      <div className="relative aspect-video w-full">
+    <div className="grid gap-12 lg:grid-cols-2 ">
+      <div
+        className="relative aspect-video w-full place-self-center
+        "
+      >
         <Image
           priority
           src={props.singleCountryData.flags.svg}
           alt={`Image of flag of ${props.singleCountryData.name}`}
           layout="fill"
-          objectFit="cover"
+          objectFit="fill"
         />
       </div>
       <div>
-        <h1 className="font-bold text-2xl">
+        <h1 className="font-bold text-2xl mb-6">
           {props.singleCountryData.name.official}
         </h1>
-        <div>
-          {info1.map((item) => (
-            <p key={item.text} className="capitalize">
-              <span className="capitalize font-medium">{item.text}: </span>
-              {item.value}
-            </p>
-          ))}
-        </div>
-        <div>
-          {info2.map((item) => (
-            <p key={item.text} className="capitalize">
-              <span className="capitalize font-medium">{item.text}: </span>
-              {item.value}
-            </p>
-          ))}
-        </div>
-        <div>
-          <p>Border Countries: </p>
-          <div className="grid grid-cols-2 gap-4">
-            {props.singleCountryData?.borders?.map((item) => (
-              <BorderCountryButton key={item} cca3={item} />
+        <div className="grid gap-5 md:grid-cols-2 gap-y-10">
+          <div>
+            {info1.map((item) => (
+              <p
+                key={item.text}
+                className="capitalize dark:text-white/50 text-black/80"
+              >
+                <span className="capitalize font-medium dark:text-white text-black">
+                  {item.text}:{" "}
+                </span>
+                {item.value}
+              </p>
             ))}
+          </div>
+          <div>
+            {info2.map((item) => (
+              <p
+                key={item.text}
+                className="capitalize dark:text-white/50 text-black/80"
+              >
+                <span className="capitalize font-medium dark:text-white text-black">
+                  {item.text}:{" "}
+                </span>
+                {item.value}
+              </p>
+            ))}
+          </div>
+          <div className="flex flex-col gap-4 md:gap-6 md:flex-row justify-between md:col-span-2">
+            <p className="">Border Countries: </p>
+            <div className="grid grid-cols-2 gap-4 flex-grow lg:grid-cols-3">
+              {props.singleCountryData?.borders?.map((item) => (
+                <BorderCountryButton key={item} cca3={item} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

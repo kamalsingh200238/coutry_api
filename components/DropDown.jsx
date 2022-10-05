@@ -45,7 +45,7 @@ export default function DropDown(props) {
     <Listbox value={selected} onChange={setSelected}>
       <div className="relative">
         {/* This is button to open selection menu */}
-        <Listbox.Button className="flex justify-between items-center gap-4 border border-gray-300 rounded-lg px-6 py-3 shadow-lg w-full focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700 dark:bg-elements-d dark:hover:bg-background-d dark:border-none focus:ring-2 dark:focus:ring-white">
+        <Listbox.Button className="flex justify-between items-center gap-4 border border-gray-300 rounded-lg px-6 py-3 shadow-lg w-full focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus-visible:border-gray-600 focus-visible:ring-1 focus-visible:ring-offset-gray-700 dark:bg-elements-d dark:hover:bg-background-d dark:border-none focus:ring-2 dark:focus:ring-white transition-all duration-150 ease-in-out">
           <span className="block truncate">
             {selected.text === "None" ? "Filter by region" : selected.text}
           </span>

@@ -31,13 +31,13 @@ export async function getStaticProps({ params }) {
 
 export default function SingleCountryPage({ singleCountryData }) {
   return (
-    <>
+    <div className="pt-12 dark:bg-background-d min-h-screen dark:text-white">
       <Head>
         <title>Country api</title>
       </Head>
-      <div className="lg:container px-10">
+      <div className="lg:container px-10 mx-auto">
         <SingleCountryInfo singleCountryData={singleCountryData[0]} />
       </div>
-    </>
+    </div>
   );
 }
