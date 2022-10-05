@@ -51,12 +51,12 @@ export default function Home({ allCountryData }) {
   }, [q, regionForFilter]);
 
   return (
-    <div className="lg:container pt-8 px-5">
+    <div className="lg:container pt-8 px-5 min-h-screen mx-auto">
       <Head>
         <title>Country api</title>
       </Head>
-      <div className="flex flex-col gap-10 mb-10">
-        <div className="">
+      <div className="flex flex-col gap-10 mb-10 sm:flex-row sm:justify-between">
+        <div className="max-w-[30rem]">
           <input
             className="px-6 py-3 w-full rounded-lg shadow-lg border-gray-300 focus:outline-none focus:border-gray-600 focus:ring-gray-700"
             type="search"
@@ -71,12 +71,11 @@ export default function Home({ allCountryData }) {
           <span className="sr-only">Search countries here</span>
         </div>
 
-        <div className="w-2/3">
+        <div className="w-2/3 max-w-[15rem]">
           <DropDown setRegionForFilter={setRegionForFilter} />
         </div>
       </div>
-
-      <div className="grid px-10 gap-14">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 px-10 gap-14 lg:px-0">
         {filteredAllCountryData.map((item, index) => (
           <CountryCard key={index} singleCountryData={item} />
         ))}

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CountryCard(props) {
   return (
     <Link href={`/country/${props.singleCountryData.cca2}`}>
-      <a className="hover:scale-105 transition-all duration-150 ease-in-out rounded-md pb-8 overflow-hidden flex flex-col gap-6 border border-gray-200 shadow-lg">
+      <a className="hover:scale-105 transition-all duration-150 ease-in-out rounded-md pb-8 overflow-hidden flex flex-col gap-6 border border-gray-200 shadow-lg focus:outline-none focus:border-gray-600 focus:ring-gray-700 focus:ring">
         <div className="relative w-full aspect-video">
           <Image
             priority
@@ -15,8 +15,8 @@ export default function CountryCard(props) {
           />
         </div>
         <div className="px-6">
-          <p className="mb-4 text-xl font-bold">
-            {props.singleCountryData.name.official}
+          <p className="mb-4 text-lg lg:text-xl font-bold">
+            {props.singleCountryData.name.common}
           </p>
           <p>
             <span className="font-medium ">Population: </span>
@@ -25,7 +25,7 @@ export default function CountryCard(props) {
             })}
           </p>
           <p>
-            <span className="font-medium">region: </span>
+            <span className="font-medium capitalize">region: </span>
             {props.singleCountryData.region}
           </p>
           <p>
