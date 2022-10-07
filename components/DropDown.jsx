@@ -74,11 +74,11 @@ export default function DropDown(props) {
                     value={option.value}
                     className={`${
                       active
-                        ? "bg-blue-100 text-blue-900 dark:text-white dark:bg-background-d transition-all ease-in-out"
+                        ? "bg-blue-100 text-blue-900 dark:text-white dark:bg-gray-800 transition-all ease-in-out"
                         : ""
                     } ${
                       selected
-                        ? "bg-yellow-100 text-yellow-900 dark:text-white dark:bg-background-d"
+                        ? "bg-yellow-100 text-yellow-900 dark:text-white dark:bg-gray-800"
                         : ""
                     } w-full text-left px-6 py-3 rounded-lg dark:bg-elements-d`}
                   >
