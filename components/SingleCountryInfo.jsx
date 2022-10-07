@@ -5,10 +5,11 @@ export default function SingleCountryInfo(props) {
   const info1 = [
     {
       text: "native name",
-      value:
-        props.singleCountryData.name.nativeName[
-          Object.keys(props.singleCountryData.languages).pop()
-        ].common,
+      value: props.singleCountryData.languages
+        ? props.singleCountryData.name.nativeName[
+            Object.keys(props.singleCountryData.languages).pop()
+          ].common
+        : props.singleCountryData.name.common,
     },
     {
       text: "Population",
@@ -37,14 +38,17 @@ export default function SingleCountryInfo(props) {
     },
     {
       text: "currencies",
-      value:
-        props.singleCountryData.currencies[
-          Object.keys(props.singleCountryData.currencies).pop()
-        ].name,
+      value: props.singleCountryData.currencies
+        ? props.singleCountryData.currencies[
+            Object.keys(props.singleCountryData.currencies).pop()
+          ].name
+        : "",
     },
     {
       text: "languages",
-      value: Object.values(props.singleCountryData.languages).join(", "),
+      value: props.singleCountryData.languages
+        ? Object.values(props.singleCountryData.languages).join(", ")
+        : "",
     },
   ];
   return (
