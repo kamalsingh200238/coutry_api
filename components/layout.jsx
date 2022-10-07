@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Layout({ children }) {
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (typeof window !== "undefined") {
@@ -7,10 +9,10 @@ export default function Layout({ children }) {
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
-      // localStorage.setItem("color-theme", "dark");
+      // localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      // localStorage.setItem("color-theme", "light");
+      // localStorage.setItem("theme", "light");
     }
   } else {
     console.log("you are on server");
@@ -18,23 +20,23 @@ export default function Layout({ children }) {
 
   function toggleTheme() {
     // if set via local storage previously
-    if (localStorage.getItem("color-theme")) {
-      if (localStorage.getItem("color-theme") === "light") {
+    if (localStorage.getItem("theme")) {
+      if (localStorage.getItem("theme") === "light") {
         document.documentElement.classList.add("dark");
-        localStorage.setItem("color-theme", "dark");
+        localStorage.setItem("theme", "dark");
       } else {
         document.documentElement.classList.remove("dark");
-        localStorage.setItem("color-theme", "light");
+        localStorage.setItem("theme", "light");
       }
 
       // if NOT set via local storage previously
     } else {
       if (document.documentElement.classList.contains("dark")) {
         document.documentElement.classList.remove("dark");
-        localStorage.setItem("color-theme", "light");
+        localStorage.setItem("theme", "light");
       } else {
         document.documentElement.classList.add("dark");
-        localStorage.setItem("color-theme", "dark");
+        localStorage.setItem("theme", "dark");
       }
     }
   }
@@ -42,7 +44,9 @@ export default function Layout({ children }) {
   return (
     <>
       <nav className="flex justify-between px-4 lg:px-8 py-8 shadow-md dark:bg-elements-d dark:text-white">
-        <p className="font-bold">Where in the world?</p>
+        <Link href={"/"}>
+          <a className="font-bold">Where in the world?</a>
+        </Link>
         <button
           className="focus:ring focus:ring-gray-600 rounded-md flex gap-4 dark:focus:ring-white"
           onClick={toggleTheme}

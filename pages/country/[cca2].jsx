@@ -2,6 +2,7 @@ import getSingleCountryData from "../../lib/getSingleCountryData.js";
 import getAllCountryData from "../../lib/getAllCountryData.js";
 import Head from "next/head";
 import SingleCountryInfo from "../../components/SingleCountryInfo.jsx";
+import Link from "next/link.js";
 
 export async function getStaticPaths() {
   // call the api
