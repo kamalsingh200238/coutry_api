@@ -94,7 +94,7 @@ export default function SingleCountryInfo(props) {
           </div>
           <div className="flex flex-col gap-4 md:gap-6 md:flex-row md:items-center justify-between md:col-span-2">
             <p className="">Border Countries: </p>
-            {typeof props.singleCountryData.borders === "undefined" && (
+            {typeof props.singleCountryData?.borders === "undefined" && (
               <p className="dark:text-white"> No border Countries</p>
             )}
             <div className="grid grid-cols-2 gap-4 flex-grow md:grid-cols-3">
